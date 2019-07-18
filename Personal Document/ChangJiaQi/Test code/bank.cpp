@@ -3,6 +3,7 @@
 using namespace std;
 
 map<string,int> bank;
+map<string,string> passwd;
 
 bool deposit(string ID,int num){
     if (!bank.count(ID)) return false;
@@ -33,9 +34,11 @@ bool transfer(string ID,string toID,int num){
 
 int main(){
     int select;
-    string ID="1001";
+    string ID,password;
     bank["1001"] = 200;
     bank["1002"] = 500;
+    cout << "Please enter your account and password.Eg:(1001 passwd):"; cin >> ID >> password;
+    if (!bank.count(ID) || passwd[ID]!=password) cout << "Error ID or passwd!\n";
     while (1){
         cout << "Please select your function (1. desposit 2. withdraw 3.inquary 4. transfer 0.Quit.)" << endl;
         cin >> select;
